@@ -1,11 +1,3 @@
-// THIS IS WHERE YOUR MAIN LOGIC WILL LIE
-
-// You would first require ALL of the files and node packages needed
-// Engineer, Manager, Intern,
-
-// REQUIRE that page-template.js
-// We are receiving that anonymous function
-// Giving the name of pageTemplate
 const inquirer = require("inquirer");
 const manager = require("./lib/Manager");
 const employee = require("./lib/Employee");
@@ -18,16 +10,7 @@ const membersArray = [];
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
-
-// And now, we can use that pageTemplate as a function, which can ACCEPT a parameter
-// pageTemplate(answers_from_inquirer_prompt);
-// INDEX FILES ARE CONSIDERED THE ENTRY POINT TO YOUR APPLICATION
-
-// IF THIS IS YOUR ENTRY POINT, YOU MUST DO YOUR INQUIRER HERE
-
-// THIS IS WHERE YOU DO YOUR FS WRITEFILE STUFF
-
-// THE DIST FOLDER IS WHERE THE OUTPUT HTML FILES WILL LAND
+const Engineer = require("./lib/Engineer");
 
 function runApp() {
   function createManager() {
@@ -65,8 +48,76 @@ function runApp() {
         membersArray.push(manager);
       });
   }
-  function createEngineer() {}
-  function createIntern() {}
+  function createEngineer() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "engineerName",
+          message: "What is the engineer's name?",
+        },
+        {
+          type: "input",
+          name: "engineerId",
+          message: "What is the engineer's id?",
+        },
+        {
+          type: "input",
+          name: "engineerEmail",
+          message: "What is the engineer's email?",
+        },
+        {
+          type: "input",
+          name: "engineerGithub",
+          message: "What is the engineer's Github?",
+        },
+      ])
+      .then((answers) => {
+        console.log(answers);
+        const engineer = new Engineer(
+          answers.engineerrName,
+          answers.engineerEmail,
+          answers.engineerGithub
+        );
+        console.log(engineer);
+        membersArray.push(engineer);
+      });
+  }
+  function createIntern() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "internName",
+          message: "What is the intern's name?",
+        },
+        {
+          type: "input",
+          name: "internId",
+          message: "What is the intern's id?",
+        },
+        {
+          type: "input",
+          name: "internEmail",
+          message: "What is the engineer's email?",
+        },
+        {
+          type: "input",
+          name: "internGithub",
+          message: "What is the intern's Github?",
+        },
+      ])
+      .then((answers) => {
+        console.log(answers);
+        const intern = new Intern(
+          answers.internName,
+          answers.internEmail,
+          answers.internGithub
+        );
+        console.log(intern);
+        membersArray.push(intern);
+      });
+  }
   function buildTeam() {
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR);
