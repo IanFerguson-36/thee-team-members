@@ -5,19 +5,19 @@ const generateTeam = (team) => {
   // A method for a template to render engineer info
 
   // A method for a template to render intern info
-//   const generateManager = (manager = {});
-//   const html = [];
-//   html.push(
-//     team
-//       .filter((employee) => employee.getRole() === "Manager")
-//       .map((manager) => generateManager(manager))
-//   );
-//   return html.join("");
-// };
+  //   const generateManager = (manager = {});
+  //   const html = [];
+  //   html.push(
+  //     team
+  //       .filter((employee) => employee.getRole() === "Manager")
+  //       .map((manager) => generateManager(manager))
+  //   );
+  //   return html.join("");
+  // };
 
-// We are exporting out an anonymous function
-module.exports = (team) => {
-  return `
+  // We are exporting out an anonymous function
+  module.exports = (team) => {
+    return `
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +41,9 @@ module.exports = (team) => {
         <div class="row">
             <div class="team-area col-12 d-flex justify-content-center">
                 YOUR METHOD GOES HERE THE CARDS OF MANAGER, INTERN, ENGINEER WILL BE. 
+                ${team.Manager}
+                ${team.Engineer}
+                ${team.Intern}
                 // }
             </div>
         </div>
@@ -48,4 +51,5 @@ module.exports = (team) => {
 </body>
 </html>
     `;
+  };
 };
