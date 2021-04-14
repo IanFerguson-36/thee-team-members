@@ -5,15 +5,15 @@ const generateTeam = (team) => {
   // A method for a template to render engineer info
 
   // A method for a template to render intern info
-  const generateManager = (manager = {});
-  const html = [];
-  html.push(
-    team
-      .filter((employee) => employee.getRole() === "Manager")
-      .map((manager) => generateManager(manager))
-  );
-  return html.join("");
-};
+//   const generateManager = (manager = {});
+//   const html = [];
+//   html.push(
+//     team
+//       .filter((employee) => employee.getRole() === "Manager")
+//       .map((manager) => generateManager(manager))
+//   );
+//   return html.join("");
+// };
 
 // We are exporting out an anonymous function
 module.exports = (team) => {

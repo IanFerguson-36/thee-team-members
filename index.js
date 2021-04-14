@@ -17,6 +17,7 @@ const fs = require("fs");
 const membersArray = [];
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+const render = require("./src/page-template.js");
 
 // And now, we can use that pageTemplate as a function, which can ACCEPT a parameter
 // pageTemplate(answers_from_inquirer_prompt);
@@ -70,7 +71,7 @@ function runApp() {
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+    fs.writeFileSync(outputPath, render(membersArray), "utf-8");
   }
 }
 runApp();
