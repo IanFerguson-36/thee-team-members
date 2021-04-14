@@ -15,6 +15,9 @@ const pageTemplate = require("./src/page-template.js");
 const path = require("path");
 const fs = require("fs");
 const membersArray = [];
+const OUTPUT_DIR = path.resolve(__dirname, "dist");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+
 // And now, we can use that pageTemplate as a function, which can ACCEPT a parameter
 // pageTemplate(answers_from_inquirer_prompt);
 // INDEX FILES ARE CONSIDERED THE ENTRY POINT TO YOUR APPLICATION
@@ -63,5 +66,11 @@ function runApp() {
   }
   function createEngineer() {}
   function createIntern() {}
+  function buildTeam() {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+      fs.mkdirSync(OUTPUT_DIR);
+    }
+    fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+  }
 }
 runApp();
